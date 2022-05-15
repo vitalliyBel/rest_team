@@ -19,8 +19,8 @@ public class Employee {
     @Column(name = "department")
     private String department;
 
-    @Column(name = "date")
-    private int date;
+    @Column(name = "datetime")
+    private String datetime;
 
     @Column(name = "task")
     private String task;
@@ -28,11 +28,11 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, String surname, String department, int date, String task) {
+    public Employee(String name, String surname, String department, String datetime, String task) {
         this.name = name;
         this.surname = surname;
         this.department = department;
-        this.date = date;
+        this.datetime = datetime;
         this.task = task;
     }
 
@@ -68,12 +68,12 @@ public class Employee {
         this.department = department;
     }
 
-    public int getDate() {
-        return date;
+    public String getDate() {
+        return datetime;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+    public void setDate(String date) {
+        this.datetime = date;
     }
 
     public String getTask() {
