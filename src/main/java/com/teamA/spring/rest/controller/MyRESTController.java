@@ -36,4 +36,22 @@ public class MyRESTController {
         }
         return employee; //В тело ответа поместится не сам объект, а json этого объекта (благодаря jackson)
     }
+
+    //Добавляем участника команды
+    @PostMapping("/employees")
+    public Employee addNewEmployee(@RequestBody Employee employee) { //В теле запроса посылаем нового участника (не указываем id)
+
+        employeeService.saveEmployee(employee); //Добавляем в базу (через класс EmployeeDAOImpl)
+        return employee; //Возвращаем участника уже с id
+    }
+    //Изменяем участника (тут уже необходимо указать id в теле метода)
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+
+        employeeService.saveEmployee(employee);
+        return employee;
+    }
+
+
+
 }
