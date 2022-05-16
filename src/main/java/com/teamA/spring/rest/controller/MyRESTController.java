@@ -52,6 +52,17 @@ public class MyRESTController {
         return employee;
     }
 
+    //Удаляем участника команды
+    @DeleteMapping("/employee/{id}")
+    public String deleteEmployee(@PathVariable int id) { //Тут возвращается String простой текст
 
+        Employee employee = employeeService.getEmployee(id);
 
+        if (employee == null) { //Если участника команды нет (т.е. нет участника с таким id)
+            throw new NoSuchEmployeeException("There is no Employee with ID = " + id + "in Database");
+        }
+
+        employeeService.deleteEmployee(id); //Если участник команды есть, мы удаляем его из базы
+        return "Employee with ID = " + id + " was deleted";
+    }
 }
