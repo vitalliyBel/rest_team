@@ -27,7 +27,7 @@ public class MyConfig {
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
             dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false");
             dataSource.setUser("root"); // пропишем здесь данные того с чьего компьютера запустим
-            dataSource.setPassword("root");//  пропишем здесь данные того с чьего компьютера запустим
+            dataSource.setPassword("admin");//  пропишем здесь данные того с чьего компьютера запустим
         } catch (PropertyVetoException e) {
             e.printStackTrace();
         }
