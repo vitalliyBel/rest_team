@@ -1,5 +1,10 @@
 package com.teamA.spring.rest.exception_handling;
 
-public class NoSuchEmployeeException {
-    int a =5;
+//класс ответственный за эксепшн некорректного айди
+public class NoSuchEmployeeException extends RuntimeException{
+
+    //переопределяем метод рантаймэксепшена
+    public NoSuchEmployeeException(String message) { //будем передавать сообщение
+        super(message);
+    }
 }
