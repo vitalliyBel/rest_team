@@ -4,6 +4,7 @@ import com.teamA.spring.rest.entity.Employee;
 import com.teamA.spring.rest.exception_handling.EmployeeIncorrectData;
 import com.teamA.spring.rest.exception_handling.NoSuchEmployeeException;
 import com.teamA.spring.rest.service.EmployeeService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ public class MyRESTController {
     private EmployeeService employeeService;
 
     //Выводим список всех участников команды
+    @ApiOperation("method to get all employees") //аннотация описывает метод в сваггере
     @GetMapping("/employees")
     public List<Employee> showAllEmployees() {
         List<Employee> allEmployees = employeeService.getAllEmployees();
@@ -26,6 +28,7 @@ public class MyRESTController {
     }
 
     //Выводим участника команды по id
+    @ApiOperation("method to get employees by id")
     @GetMapping("/employees/{id}")
     public Employee getEmployee(@PathVariable int id) { //PathVariable это получение переменной из адреса запроса
 
@@ -38,6 +41,7 @@ public class MyRESTController {
     }
 
     //Добавляем участника команды
+    @ApiOperation("method to add new employees")
     @PostMapping("/employees")
     public Employee addNewEmployee(@RequestBody Employee employee) { //В теле запроса посылаем нового участника (не указываем id)
 
@@ -45,6 +49,7 @@ public class MyRESTController {
         return employee; //Возвращаем участника уже с id
     }
     //Изменяем участника (тут уже необходимо указать id в теле метода)
+    @ApiOperation("method to change employees")
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee employee) {
 
@@ -53,6 +58,7 @@ public class MyRESTController {
     }
 
     //Удаляем участника команды
+    @ApiOperation("method to delete employees by id")
     @DeleteMapping("/employee/{id}")
     public String deleteEmployee(@PathVariable int id) { //Тут возвращается String простой текст
 
