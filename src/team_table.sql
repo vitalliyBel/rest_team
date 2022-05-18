@@ -21,3 +21,40 @@ VALUES
     ('Дмитрий', 'Верлыго', 'IT', '15.05.2022','Сдлеать dao');
 
 
+
+
+
+
+USE my_db;
+
+CREATE TABLE users (
+                       username varchar(15),
+                       password varchar(100),
+                       enabled tinyint(1),
+                       PRIMARY KEY (username)
+) ;
+
+CREATE TABLE authorities (
+                             username varchar(15),
+                             authority varchar(25),
+                             FOREIGN KEY (username) references users(username)
+) ;
+
+INSERT INTO my_db.users (username, password, enabled)
+VALUES
+    ('anatoli', '{noop}anatoli', 1),
+    ('vitaliy', '{noop}vitaliy', 1),
+    ('nikita', '{noop}nikita', 1),
+    ('dmitry', '{noop}dmitry', 1),
+    ('aleksandr', '{noop}aleksandr', 1);
+
+INSERT INTO my_db.authorities (username, authority)
+VALUES
+    ('anatoli', 'ROLE_EMPLOYEE'),
+    ('vitaliy', 'ROLE_HR'),
+    ('nikita', 'ROLE_HR'),
+    ('dmitry', 'ROLE_HR'),
+    ('aleksandr', 'ROLE_MANAGER');
+
+
+

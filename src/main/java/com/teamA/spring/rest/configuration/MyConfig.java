@@ -8,6 +8,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 import javax.sql.DataSource;
@@ -18,7 +20,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = "com.teamA.spring.rest")
 @EnableWebMvc //включение спринг-mvc
 @EnableTransactionManagement
-public class MyConfig {
+public class MyConfig implements WebMvcConfigurer {
 
     @Bean
     public DataSource dataSource(){  //подключение к базе
@@ -51,6 +53,15 @@ public class MyConfig {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject()); //назначаем объекту sessionFactory
         return transactionManager;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
 }
