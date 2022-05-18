@@ -18,30 +18,30 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-//        auth.jdbcAuthentication().dataSource(dataSource); //тут смотрит уже из базы данных инфу
+        auth.jdbcAuthentication().dataSource(dataSource); //тут смотрит уже из базы данных инфу
         // храним пароли прям тут(но лучше в базе)
-        User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
-        auth.inMemoryAuthentication()
-                .withUser(userBuilder
-                        .username("anatoli")
-                         .password("anatoli")
-                        .roles("EMPLOYEE"))
-                .withUser(userBuilder
-                        .username("vitaliy")
-                        .password("vitaliy")
-                        .roles("HR"))
-                .withUser(userBuilder
-                        .username("nikita")
-                        .password("nikita")
-                        .roles("MANAGER", "HR"))
-                .withUser(userBuilder
-                        .username("dmitry")
-                        .password("dmitry")
-                        .roles("EMPLOYEE"))
-                 .withUser(userBuilder
-                    .username("aleksandr")
-                    .password("aleksandr")
-                    .roles("EMPLOYEE"));
+//        User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
+//        auth.inMemoryAuthentication()
+//                .withUser(userBuilder
+//                        .username("anatoli")
+//                         .password("anatoli")
+//                        .roles("EMPLOYEE"))
+//                .withUser(userBuilder
+//                        .username("vitaliy")
+//                        .password("vitaliy")
+//                        .roles("HR"))
+//                .withUser(userBuilder
+//                        .username("nikita")
+//                        .password("nikita")
+//                        .roles("MANAGER", "HR"))
+//                .withUser(userBuilder
+//                        .username("dmitry")
+//                        .password("dmitry")
+//                        .roles("EMPLOYEE"))
+//                 .withUser(userBuilder
+//                    .username("aleksandr")
+//                    .password("aleksandr")
+//                    .roles("EMPLOYEE"));
     }
 
     @Override
